@@ -8,10 +8,20 @@
 function bonbon(xx, yy) {
     this.x = x;
     this.y = yy;
-    this.dispo = 1;
-    this.changerDispo = function (newdispo) {
+    this.disponible = 1;
+    this.changerDisponible = function (newdispo) {
         this.dispo = newdispo;
     }
 }
 
-//function joueur(xx, yy, )  à voir une fois l'hypothèse est complétée
+function joueur(xx, yy) {
+    this.currentX = xx;
+    this.currentY = yy;
+    this.moveUp = function () {
+        this.currentY = this.currentY + 1;
+    }
+    //moveDown, Left, Right à faire
+    document.getElementsById("fenetreJeu").addEventListener("keyPressed", moveUp);
+}
+
+// function map(?) attend le travail d'Yannick
