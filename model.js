@@ -40,5 +40,5 @@ function map(){
 	
 }
 
-function
+
 // function map(?) attend le travail d'Yannick
