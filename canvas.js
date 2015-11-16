@@ -17,9 +17,9 @@ window.onload = function()
 	context.lineWidth=10;
 	context.lineHeight=10;
 	context.strokeStyle = "#FF0000";
-	context.strokeRect(300,300,400,400);
+	context.strokeRect(0,0,400,400);
 	context.fillStyle="#DDDDDD";
-	context.fillRect(300,300,395,395);
+	context.fillRect(5,5,395,395);
 	context.stroke();
 	
 	
