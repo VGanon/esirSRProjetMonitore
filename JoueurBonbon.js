@@ -12,7 +12,7 @@ var listeJoueurs = new Array();
 var Bonbon = function (xx, yy) {
     this.x = xx;
     this.y = yy;
-    this.image = getImage("red_dot.png");
+    this.image = getImage("Images/red_dot.png");
 };
 
 Bonbon.prototype.estMange = function () { //le bonbon courant est mangé
@@ -23,10 +23,16 @@ Bonbon.prototype.estMange = function () { //le bonbon courant est mangé
     }
 };
 
+/*
+ * Créer un nombre aléatoire entre 1 et 400
+ */
 var nbAleaInf400 = function () {
     Math.floor((Math.random() * 400) + 1);
 };
 
+/*
+ * Créer 10 bonbons aléatoires
+ */
 var creerLesBonbons = function () {
     for (index = 0; index < 10; index++) {
         var bb = new Bonbon(new nbAleaInf400(), new nbAleaInf400());
@@ -39,7 +45,7 @@ var creerLesBonbons = function () {
 var Joueur = function (xx, yy) {
     this.x = xx;
     this.y = yy;
-    this.image = getImage("blue2.png");
+    this.image = getImage("Images/blue2.png");
     this.score = 0;
 //    document.getElementsById("fenetreJeu").addEventListener("keyPressed", moveUp);
 };
@@ -51,22 +57,22 @@ Joueur.prototype.draw = function () {
 };
 
 Joueur.prototype.moveLeft = function () {
-    this.image = getImage("blue3.png");
+    this.image = getImage("Images/blue3.png");
     this.x -= 10;
 };
 
 Joueur.prototype.moveRight = function () {
-    this.image = getImage("blue3.png");
+    this.image = getImage("Images/blue3.png");
     this.x += 10;
 };
 
 Joueur.prototype.moveUp = function () {
-    this.image = getImage("blue3.png");
+    this.image = getImage("Images/blue3.png");
     this.y -= 10;
 };
 
 Joueur.prototype.moveDown = function () {
-    this.image = getImage("blue3.png");
+    this.image = getImage("Images/blue3.png");
     this.x += 10;
 };
 
