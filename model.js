@@ -4,24 +4,64 @@
  * and open the template in the editor.
  */
 
+//non playable character
 
-function bonbon(xx, yy) {
-    this.x = x;
+var Bonbon = function(xx, yy) {
+    this.x = xx;
     this.y = yy;
     this.disponible = 1;
-    this.changerDisponible = function (newdispo) {
-        this.dispo = newdispo;
-    }
-}
+    this.image = getImage("red_dot.png");
+};
 
-function joueur(xx, yy) {
-    this.currentX = xx;
-    this.currentY = yy;
-    this.moveUp = function () {
-        this.currentY = this.currentY + 1;
-    }
-    //moveDown, Left, Right à faire
-    document.getElementsById("fenetreJeu").addEventListener("keyPressed", moveUp);
-}
+Bonbon.prototype.estMange = function() {
+    this.disponible = 0;
+};
 
-// function map(?) attend le travail d'Yannick
+var b1 = new Bonbon(50,50);
+var b2 = new Bonbon(70,90);
+
+//playable character
+
+var Player = function(xx, yy) {
+    this.x = xx;
+    this.y = yy;
+    this.image = getImage("blue2.png");
+    this.score = 0;
+//    document.getElementsById("fenetreJeu").addEventListener("keyPressed", moveUp);
+};
+
+Player.prototype.draw = function() {
+    fill(255, 0, 0);
+    this.y = constraint(this.y, 0, height-50);
+    image(this.image, this.x, this.y, 40, 40);
+};
+
+Player.prototype.moveLeft = function() {
+    this.image = getImage("blue3.png");
+    this.x -= 10;
+};
+
+Player.prototype.moveRight = function() {
+    this.image = getImage("blue3.png");
+    this.x += 10;
+};
+
+Player.prototype.moveUp = function() {
+    this.image = getImage("blue3.png");
+    this.y -= 10;
+};
+
+Player.prototype.moveDown = function() {
+    this.image = getImage("blue3.png");
+    this.x += 10;
+};
+
+var p1 = new Player(10,10);
+
+draw = function() {
+    background(255,255,255);
+    if(keyIsPressed && keyCode === 37) {
+        p1.moveLeft();
+    }
+    p1.draw();
+};
