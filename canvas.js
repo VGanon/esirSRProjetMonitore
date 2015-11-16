@@ -22,4 +22,6 @@ window.onload = function()
 	context.fillRect(300,300,395,395);
 	context.stroke();
 	
+	
+	
 }
