@@ -11,7 +11,7 @@
             Message pour les navigateurs ne supportant pas encore canvas.
 
     </canvas>
-   <h1>Communication avec socket.io !</h1>
+   <h1>Jeu  !</h1>
 
 
         <p><input type="button" value="Embêter le serveur" id="poke" /></p>
@@ -33,6 +33,18 @@
     $('#poke').click(function () {
         socket.emit('message', 'Salut serveur, ça va ?');
 	})
+	window.onkeydown = function (e) {
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code === 38) { //up key
+        socket.emit('key', 'up')
+    } else if (code === 40) { //down key
+        socket.emit('key','down');
+    } else if (code === 39) { //right key
+        socket.emit('key','right');
+    } else if (code === 37) { //left key
+        socket.emit('key','left');
+    }
+};
 </script>
 
 </html>

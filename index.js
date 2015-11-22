@@ -19,6 +19,9 @@ io.sockets.on('connection',function(socket){
 	socket.on('petit_nouveau', function(pseudo) {
 		socket.pseudo = pseudo;
     });
+	socket.on('key',function(e)){
+		//appel à la fonction qui bouge le joueur
+	});
 
 });
 
