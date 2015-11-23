@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 //non playable character
 
 var listeBonbons = new Array();
@@ -81,10 +75,10 @@ listeJoueurs.push(j1);
 var j2 = new Joueur(10, 50);
 listeJoueurs.push(j2);
 
-draw = function () {
-    background(255, 255, 255);
-    if (keyIsPressed && keyCode === 37) {
-        j1.moveLeft();
-    }
-    j1.draw();
-};
+//draw = function () {
+//    background(255, 255, 255);
+//    if (keyIsPressed && keyCode === 37) {
+//        j1.moveLeft();
+//    }
+//    j1.draw();
+//};
