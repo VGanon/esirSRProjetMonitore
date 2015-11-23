@@ -1,0 +1,95 @@
+//non playable character
+
+var listeBonbons = new Array();
+var listeJoueurs = new Array();
+
+var Bonbon = function (xx, yy) {
+    this.x = xx;
+    this.y = yy;
+    this.image = getImage("Images/red_dot.png");
+};
+
+Bonbon.prototype.estMange = function () { //le bonbon courant est mangé
+    for (index = 0; index < listeBonbons.length; index++) {
+        if ((listeBonbons[index].x === this.x) && (listeBonbons[index].y === this.y)) {
+            delete listeBonbons[index];
+        }
+    }
+};
+
+/*
+ * Créer un nombre aléatoire entre 1 et 400
+ */
+var nbAleaInf400 = function () {
+    Math.floor((Math.random() * 400) + 1);
+};
+
+/*
+ * Créer 10 bonbons aléatoires
+ */
+var creerLesBonbons = function () {
+    for (index = 0; index < 10; index++) {
+        var bb = new Bonbon(new nbAleaInf400(), new nbAleaInf400());
+        listeBonbons.push(bb);
+    }
+};
+
+//playable character
+
+var Joueur = function (xx, yy) {
+	this.pseudo=;
+    this.x = xx;
+    this.y = yy;
+    this.image = getImage("Images/blue2.png");
+    this.score = 0;
+//    document.getElementsById("fenetreJeu").addEventListener("keyPressed", moveUp);
+};
+//function to implement the json
+
+function replacer(key, value) {
+    if (typeof value === 'number' && !isFinite(value)) {
+        return String(value);
+    }
+    return value;
+}
+Joueur.prototype.draw = function () {
+    fill(255, 0, 0);
+    this.y = constraint(this.y, 0, height - 50);
+    image(this.image, this.x, this.y, 40, 40);
+};
+
+Joueur.prototype.moveLeft = function () {
+    this.image = getImage("Images/blue3.png");
+    this.x -= 10;
+};
+
+Joueur.prototype.moveRight = function () {
+    this.image = getImage("Images/blue3.png");
+    this.x += 10;
+};
+
+Joueur.prototype.moveUp = function () {
+    this.image = getImage("Images/blue3.png");
+    this.y -= 10;
+};
+
+Joueur.prototype.moveDown = function () {
+    this.image = getImage("Images/blue3.png");
+    this.x += 10;
+};
+
+var j1 = new Joueur(10, 10);
+listeJoueurs.push(j1);
+var j2 = new Joueur(10, 50);
+listeJoueurs.push(j2);
+
+var myJSONText = JSON.stringify(listeBonbons, replacer);
+var myJSONText2 = JSON.stringify(listeJoueurs, replacer);
+
+//draw = function () {
+//    background(255, 255, 255);
+//    if (keyIsPressed && keyCode === 37) {
+//        j1.moveLeft();
+//    }
+//    j1.draw();
+//};
