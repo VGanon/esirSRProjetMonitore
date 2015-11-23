@@ -22,6 +22,8 @@ io.sockets.on('connection', function (socket) {
     socket.on('key', function (e) {
         console.log('keypressed by ' + socket.pseudo + ' : ' + e);
         //appel à la fonction qui bouge le joueur
+        //TBA
+        
     });
 
 });

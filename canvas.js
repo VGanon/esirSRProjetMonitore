@@ -1,3 +1,6 @@
+var joueurs = [];
+var bonbons = [];
+
 window.onload = function ()
 {
     var canvas = document.getElementById('mapDuJeu');
@@ -22,11 +25,8 @@ window.onload = function ()
     context.fillStyle = "#DDDDDD";
     context.fillRect(5, 5, 395, 395);
     context.stroke();
-    
-    /*
-     * Créer 10 bonbons aléatoires
-     */
-    var bonbons = [];
+
+    //Créer 10 bonbons aléatoires
     var img = document.createElement("img");
     img.src = "Images/red_dot.png";
     img.addEventListener("load", function () {
@@ -34,7 +34,7 @@ window.onload = function ()
             var x = Math.floor((Math.random() * 20) + 1) * 20;
             var y = Math.floor((Math.random() * 20) + 1) * 20;
             //voir si la position est déjà prise :
-            if (bonbons.indexOf([x,y]) === -1) {
+            if (bonbons.indexOf([x, y]) === -1) {
                 context.drawImage(img, x, y);
                 bonbons.push([x, y]);
             } else {
@@ -43,9 +43,8 @@ window.onload = function ()
         }
     });
     //fin
-    
+
     //créer 3 joueurs aléatoires
-    var joueurs = [];
     var imgJoueur = document.createElement("img");
     imgJoueur.src = "Images/blue3.png";
     imgJoueur.addEventListener("load", function () {
@@ -53,7 +52,7 @@ window.onload = function ()
             var x = Math.floor((Math.random() * 20) + 1) * 20;
             var y = Math.floor((Math.random() * 20) + 1) * 20;
             //voir si la position est déjà prise :
-            if (joueurs.indexOf([x,y]) === -1) {
+            if (joueurs.indexOf([x, y]) === -1) {
                 context.drawImage(imgJoueur, x, y);
                 joueurs.push([x, y]);
             } else {
@@ -65,7 +64,18 @@ window.onload = function ()
 
 }; //fin windows.onload
 
+//comparer les deux tableaux bonbons et joueurs pour voir si au moins un des bonbons est mangé
 //le bonbon courant est mangé ou pas ?
-function testerManger(xJ, yJ, xB, yB) {
-    return (xJ === xB) && (yJ === yB);
-};
+//à tester
+function mettreAJour() {
+    var changementExiste = false;
+    for (var iJoueur = 0; iJoueur < joueurs.length; iJoueur++) {
+        if (bonbons.indexOf(joueurs[iJoueur]) !== -1) {
+            bonbons.splice(iJoueur, 1); //manger le bonbon
+            changementExiste = true;
+        }
+    }
+    return changementExiste;
+}
+;
+
