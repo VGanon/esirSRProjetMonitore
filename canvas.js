@@ -26,14 +26,18 @@ window.onload = function ()
     //test méthode drawImage()
     var img = document.createElement("img");
     img.src = "Images/blue2.png";
+    var spriteW = 64, spriteH = 8;
     img.addEventListener("load", function () {
-        for (var x = 10; x < 200; x += 30) {
-            context.drawImage(img, x, 10);
-        }
-    });
+        var cycle = 0;
+        setInterval(function () {
+            context.clearRect(0, 0, spriteW, spriteH);
+            context.drawImage(img,
+                    // source rectangle
+                    cycle * spriteW, 0, spriteW, spriteH,
+                    // destination rectangle
+                    0, 0, spriteW, spriteH);
+            cycle = (cycle + 1) % 8;
+        }, 120);
+});
 
-
-
-
-
-}
+}; //fin
