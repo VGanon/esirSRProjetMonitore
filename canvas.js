@@ -31,10 +31,15 @@ window.onload = function ()
     img.src = "Images/red_dot.png";
     img.addEventListener("load", function () {
         for (var i = 0; i < 5; i += 1) {
-            var x = Math.floor((Math.random() * 400) + 1);
-            var y = Math.floor((Math.random() * 400) + 1);
-            context.drawImage(img, x, y);
-            bonbons.push([x, y]);
+            var x = Math.floor((Math.random() * 20) + 1) * 20;
+            var y = Math.floor((Math.random() * 20) + 1) * 20;
+            //voir si la position est déjà prise :
+            if (bonbons.indexOf([x,y]) === -1) {
+                context.drawImage(img, x, y);
+                bonbons.push([x, y]);
+            } else {
+                i -= 1;
+            }
         }
     });
     //fin
@@ -45,35 +50,22 @@ window.onload = function ()
     imgJoueur.src = "Images/blue3.png";
     imgJoueur.addEventListener("load", function () {
         for (var i = 0; i < 3; i += 1) {
-            var x = Math.floor((Math.random() * 400) + 1);
-            var y = Math.floor((Math.random() * 400) + 1);
-            context.drawImage(imgJoueur, x, y);
-            joueurs.push([x, y]);
+            var x = Math.floor((Math.random() * 20) + 1) * 20;
+            var y = Math.floor((Math.random() * 20) + 1) * 20;
+            //voir si la position est déjà prise :
+            if (joueurs.indexOf([x,y]) === -1) {
+                context.drawImage(imgJoueur, x, y);
+                joueurs.push([x, y]);
+            } else {
+                i -= 1;
+            }
         }
     });
     //fin
 
 }; //fin windows.onload
 
-var listeBonbons = new Array();
-
-var Bonbon = function (xx, yy) {
-    this.x = xx;
-    this.y = yy;
-    this.image = getImage("Images/red_dot.png");
-};
-
-Bonbon.prototype.estMange = function () { //le bonbon courant est mangé
-    for (index = 0; index < listeBonbons.length; index++) {
-        if ((listeBonbons[index].x === this.x) && (listeBonbons[index].y === this.y)) {
-            delete listeBonbons[index];
-        }
-    }
-};
-
-/*
- * Créer un nombre aléatoire entre 1 et 400
- */
-var nbAleaInf400 = function () {
-    Math.floor((Math.random() * 400) + 1);
+//le bonbon courant est mangé ou pas ?
+function testerManger(xJ, yJ, xB, yB) {
+    return (xJ === xB) && (yJ === yB);
 };
