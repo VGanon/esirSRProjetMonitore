@@ -11,6 +11,7 @@ app.get('/', function (req, res) {
 
 io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('message', 'Un autre client vient de se connecter !');
+    //socket.broadcast.emit()
     // Quand le serveur reçoit un signal de type "message" du client    
     socket.on('message', function (message) {
         console.log(socket.pseudo + ' me parle ! Il me dit : ' + message);
